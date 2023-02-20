@@ -20,7 +20,7 @@ WHERE eng_per_week_per_user >= 3
 )
 
 SELECT *
+, CASE WHEN user_id IS NOT NULL THEN 1 ELSE 0 END AS adopted
 FROM public.asana_users
 LEFT JOIN adopted
 ON asana_users.object_id = adopted.user_id
-WHERE adopted.user_id IS NOT NULL
