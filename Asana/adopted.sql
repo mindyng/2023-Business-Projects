@@ -19,7 +19,23 @@ FROM touches
 WHERE eng_per_week_per_user >= 3
 )
 
-SELECT *
+SELECT user_id
+, creation_time
+, DATE(creation_time) AS creation_time_date
+, EXTRACT(YEAR FROM creation_time) AS creation_time_year
+, EXTRACT(MONTH FROM creation_time) AS creation_time_month
+, EXTRACT(isodow FROM creation_time) AS creation_time_dow
+, name
+, email
+, creation_source
+, TO_TIMESTAMP(last_session_creation_time) AS last_session_creation_time
+, EXTRACT(YEAR FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_year
+, EXTRACT(MONTH FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_month
+, EXTRACT(isodow FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_dow
+, opted_in_to_mailing_list
+, enabled_for_marketing_drip
+, org_id
+, invited_by_user_id
 , CASE WHEN user_id IS NOT NULL THEN 1 ELSE 0 END AS adopted
 FROM public.asana_users
 LEFT JOIN adopted
