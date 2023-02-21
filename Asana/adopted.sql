@@ -25,6 +25,7 @@ SELECT user_id
 , EXTRACT(YEAR FROM creation_time) AS creation_time_year
 , EXTRACT(MONTH FROM creation_time) AS creation_time_month
 , EXTRACT(isodow FROM creation_time) AS creation_time_dow
+, EXTRACT(hour FROM creation_time) AS creation_time_hour
 , name
 , email
 , creation_source
@@ -32,6 +33,7 @@ SELECT user_id
 , EXTRACT(YEAR FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_year
 , EXTRACT(MONTH FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_month
 , EXTRACT(isodow FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_dow
+, EXTRACT(hour FROM TO_TIMESTAMP(last_session_creation_time)) AS last_session_creation_time_hour
 , opted_in_to_mailing_list
 , enabled_for_marketing_drip
 , org_id
