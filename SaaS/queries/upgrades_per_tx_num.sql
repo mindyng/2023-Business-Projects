@@ -66,5 +66,5 @@ ORDER BY 1, transaction_date1
 SELECT TO_CHAR(SUM(CASE WHEN transaction_type1 = 'UPGRADE' THEN 1 ELSE 0 END) * 100.00/COUNT(*),'990D99%') AS first_tx_upgrade_pct
 , TO_CHAR(SUM(CASE WHEN transaction_type2 = 'UPGRADE' THEN 1 ELSE 0 END) * 100.00/COUNT(*),'990D99%') AS second_tx_upgrade_pct
 , TO_CHAR(SUM(CASE WHEN transaction_type3 = 'UPGRADE' THEN 1 ELSE 0 END) * 100.00/COUNT(*),'990D99%') AS third_tx_upgrade_pct
-, TO_CHAR(SUM(CASE WHEN transaction_type4 = 'UPGRADE' THEN 1 ELSE 0 END) * 100.00/COUNT(*),'990D99%') AS first_tx_upgrade_pct
+, TO_CHAR(SUM(CASE WHEN transaction_type4 = 'UPGRADE' THEN 1 ELSE 0 END) * 100.00/COUNT(*),'990D99%') AS fourth_tx_upgrade_pct
 FROM pivot 
