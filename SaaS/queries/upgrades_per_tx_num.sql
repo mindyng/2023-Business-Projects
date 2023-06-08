@@ -1,3 +1,5 @@
+--upgrades happen the most and at equivalent percentages during 1st and 2nd transactions
+
 WITH transaction_num AS (
 SELECT *
 , ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY transaction_date) AS tx_num
