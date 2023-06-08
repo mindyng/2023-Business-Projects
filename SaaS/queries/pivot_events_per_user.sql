@@ -11,17 +11,6 @@ FROM transaction_num
 WHERE tx_num <5
 )
 
--- SELECT cust_id, transaction_date
--- FROM specific_tx
--- WHERE cust_id
--- IN (SELECT cust_id
--- FROM specific_tx
--- WHERE tx_num = 4)
--- ORDER BY cust_id, transaction_date
-
--- SELECT *
--- FROM
--- (
 SELECT t1.cust_id
 , t1.transaction_type AS transaction_type1
 , t1.subscription_type AS subscription_type1
@@ -54,13 +43,14 @@ SELECT t1.cust_id
 , t4.age_group AS age_group4
 , t4.customer_country AS customer_country4
 , t4.referral_type AS referral_type4
+ 
+, t1.transaction_date AS transaction_date1
+, t2.transaction_date AS transaction_date2
+, t3.transaction_date AS transaction_date3
+, t4.transaction_date AS transaction_date4
 
-, MIN(t1.transaction_date) AS transaction_date1
-, MIN(t2.transaction_date) AS transaction_date2
-, MIN(t3.transaction_date) AS transaction_date3
-, MIN(t4.transaction_date) AS transaction_date4
 FROM specific_tx AS t1
-JOIN specific_tx AS t2
+LEFT JOIN specific_tx AS t2
 ON t1.cust_id = t2.cust_id
 AND t2.tx_num = t1.tx_num + 1 
 LEFT JOIN specific_tx AS t3
@@ -69,14 +59,4 @@ AND t3.tx_num = t1.tx_num + 2
 LEFT JOIN specific_tx AS t4
 ON t1.cust_id = t4.cust_id
 AND t4.tx_num = t1.tx_num + 3 
--- WHERE t4.transaction_date IS NOT NULL
-GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
 ORDER BY 1, transaction_date1
---  ) test
--- WHERE cust_id IN
-
--- (SELECT cust_id
--- FROM specific_tx
--- WHERE tx_num = 4
--- )
-
