@@ -80,6 +80,8 @@ AND transaction_type2 = 'UPGRADE') *100.00
 SELECT TO_CHAR(upgrade_perc,'990D99%') AS upgrade_percent_to_2nd_tx
 FROM perc
 
+--Output: 12.39%
+
 --up to 3rd transcaction
 WITH transaction_num AS (
 SELECT *
@@ -161,3 +163,5 @@ AND (transaction_type2 = 'UPGRADE'
 
 SELECT TO_CHAR(upgrade_perc,'990D99%') AS upgrade_percent_to_3rd_tx
 FROM perc
+
+--Output: 4.44%
