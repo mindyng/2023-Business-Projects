@@ -1,0 +1,73 @@
+--for churns in 2nd and 3rd transactions, takes about 1/2 a year, which is faster time span than for upgrades to happen
+--then again decison to save money is easier than decision to invest in something
+
+WITH transaction_num AS (
+SELECT *
+, ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY transaction_date) AS tx_num
+FROM public.saas_cust_transactions
+ORDER BY cust_id, transaction_date
+)
+
+, specific_tx AS (
+SELECT *
+FROM transaction_num
+WHERE tx_num <5
+)
+
+, pivot AS (
+SELECT t1.cust_id
+, t1.transaction_type AS transaction_type1
+, t1.subscription_type AS subscription_type1
+, t1.subscription_price AS subscription_price1
+, t1.customer_gender AS customer_gender1
+, t1.age_group AS age_group1
+, t1.customer_country AS customer_country1
+, t1.referral_type AS referral_type1
+
+, t2.transaction_type AS transaction_type2
+, t2.subscription_type AS subscription_type2
+, t2.subscription_price AS subscription_price2
+, t2.customer_gender AS customer_gender2
+, t2.age_group AS age_group2
+, t2.customer_country AS customer_country2
+, t2.referral_type AS referral_type2
+
+, t3.transaction_type AS transaction_type3
+, t3.subscription_type AS subscription_type3
+, t3.subscription_price AS subscription_price3
+, t3.customer_gender AS customer_gender3
+, t3.age_group AS age_group3
+, t3.customer_country AS customer_country3
+, t3.referral_type AS referral_type3
+
+, t4.transaction_type AS transaction_type4
+, t4.subscription_type AS subscription_type4
+, t4.subscription_price AS subscription_price4
+, t4.customer_gender AS customer_gender4
+, t4.age_group AS age_group4
+, t4.customer_country AS customer_country4
+, t4.referral_type AS referral_type4
+ 
+, t1.transaction_date AS transaction_date1
+, t2.transaction_date AS transaction_date2
+, t3.transaction_date AS transaction_date3
+, t4.transaction_date AS transaction_date4
+
+FROM specific_tx AS t1
+LEFT JOIN specific_tx AS t2
+ON t1.cust_id = t2.cust_id
+AND t2.tx_num = t1.tx_num + 1 
+LEFT JOIN specific_tx AS t3
+ON t1.cust_id = t3.cust_id
+AND t3.tx_num = t1.tx_num + 2 
+LEFT JOIN specific_tx AS t4
+ON t1.cust_id = t4.cust_id
+AND t4.tx_num = t1.tx_num + 3 
+ORDER BY 1, transaction_date1
+)
+
+--how long it took for real churn (not churn to churn) between 1st and 2nd tx, 2nd and 3rd tx
+SELECT
+ROUND(AVG(CASE WHEN transaction_type1 IN ('initial', 'UPGRADE', 'REDUCTION') AND transaction_type2 = 'CHURN' THEN transaction_date2-transaction_date1 END)/365,2) AS total_yrs_to_2ndtx_churn --0.53
+, ROUND(AVG(CASE WHEN transaction_type2 IN ('UPGRADE', 'REDUCTION') AND transaction_type3 = 'CHURN' THEN transaction_date3-transaction_date2 END)/365,2) AS total_yrs_to_3rdtx_churn --0.48
+FROM pivot
