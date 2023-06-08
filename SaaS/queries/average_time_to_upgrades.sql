@@ -1,5 +1,3 @@
---2nd transaction upgrade
-
 WITH transaction_num AS (
 SELECT *
 , ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY transaction_date) AS tx_num
@@ -65,12 +63,8 @@ AND t4.tx_num = t1.tx_num + 3
 ORDER BY 1, transaction_date1
 )
 
-SELECT ROUND(AVG(transaction_date2 - transaction_date1)/365,2) AS avg_years_to_initial_upgrade
+--how long it took to upgrade between 1st and 2nd tx, 2nd and 3rd tx
+SELECT
+ROUND(AVG(CASE WHEN transaction_type1 IN ('initial','CHURN') AND transaction_type2 = 'UPGRADE' THEN transaction_date2-transaction_date1 END)/365,2) AS total_yrs_to_2ndtx_upgrade --1.06
+ROUND(AVG(CASE WHEN transaction_type2 = 'CHURN' AND transaction_type3 = 'UPGRADE' THEN transaction_date3-transaction_date2 END)/365,2) AS total_yrs_to_3rdtx_upgrade --0.60
 FROM pivot
-WHERE transaction_date2 IS NOT NULL
-AND transaction_date3 IS NULL
-AND transaction_date4 IS NULL
-AND transaction_type2 = 'UPGRADE'
-
---3rd transaction upgrade
-
