@@ -1,3 +1,5 @@
+--incredible: takes about a year to have an upgrade between 1st and 2nd transactions and then reduces down to 8 between 2nd and 3rd transactions.
+
 WITH transaction_num AS (
 SELECT *
 , ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY transaction_date) AS tx_num
