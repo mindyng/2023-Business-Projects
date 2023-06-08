@@ -1,3 +1,5 @@
+--Important note about this dataset: this is in the middle of users' transaction history. The earliest transaction for a user is not necessarily their 'initial' transaction.
+
 WITH transaction_num AS (
 SELECT *
 , ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY transaction_date) AS tx_num
