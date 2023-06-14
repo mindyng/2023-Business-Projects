@@ -20,9 +20,18 @@ WHERE anonymous_id = '6555280d-165a-401e-8bbe-b57c661a704d'
 -- ORDER BY 1, 2
 )
 
-SELECT * 
+SELECT pc.anonymous_id
+, pc.received_at AS purchase_click_time
+, COALESCE(class, product_id) AS class
+, pc.location
+, pc.action
+, p.received_at AS purchase_time
+, total
+, revenue
+, discount
+, is_gift
 FROM sample_purchase_click AS pc
-LEFT JOIN sample_purchase AS p
+FULL JOIN sample_purchase AS p
 ON pc.anonymous_id = p.anonymous_id
 AND pc.class = p.product_id
 AND pc.received_at <= p.received_at
