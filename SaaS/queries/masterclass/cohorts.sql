@@ -250,8 +250,8 @@ FROM masterclass.purchased_class
 WHERE anonymous_id IN (SELECT DISTINCT anonymous_id FROM gordon_ramsay_purchases)) AS sub
 )
 
-SELECT COUNT(product_id)
+SELECT COUNT(DISTINCT anonymous_id)
 --, ROW_NUMBER() OVER (PARTITION BY anonymous_id, product_id ORDER BY received_at) AS dup
 FROM mixed_purchases
-WHERE total_dist_cust_purchases = 1 
+WHERE total_dist_cust_purchases > 1 --when anonymous_id made GR class with another MC product (other class/annual pass)
 -- AND is_gift = 't'
