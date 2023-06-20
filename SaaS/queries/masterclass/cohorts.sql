@@ -235,7 +235,7 @@ GROUP BY 1, 3, 4, 5, 6
 -- FROM test_count
 -- WHERE cust_purchase_count = 4			
 
-, gordan_ramsay_purchases AS (
+, gordon_ramsay_purchases AS (
 SELECT *
 FROM masterclass.purchased_class
 WHERE product_id LIKE '%gordon-ramsay%'
@@ -243,15 +243,15 @@ WHERE product_id LIKE '%gordon-ramsay%'
 
 , mixed_purchases AS (
 SELECT *
-	, SUM(CASE WHEN dist_cust_prod = 1 THEN 1 ELSE 0 END) OVER (PARTITION BY anonymous_id) AS cust_purchases_with_gr
+	, SUM(CASE WHEN dist_cust_prod = 1 THEN 1 ELSE 0 END) OVER (PARTITION BY anonymous_id) AS total_dist_cust_purchases
 FROM (SELECT *
 , ROW_NUMBER() OVER (PARTITION BY anonymous_id, product_id) AS dist_cust_prod
 FROM masterclass.purchased_class
-WHERE anonymous_id IN (SELECT DISTINCT anonymous_id FROM gordan_ramsay_purchases)) AS sub
-
+WHERE anonymous_id IN (SELECT DISTINCT anonymous_id FROM gordon_ramsay_purchases)) AS sub
 )
 
-SELECT *
+SELECT COUNT(product_id)
+--, ROW_NUMBER() OVER (PARTITION BY anonymous_id, product_id ORDER BY received_at) AS dup
 FROM mixed_purchases
-WHERE cust_purchases_with_gr = 1
-AND is_gift = 't'
+WHERE total_dist_cust_purchases = 1 
+-- AND is_gift = 't'
