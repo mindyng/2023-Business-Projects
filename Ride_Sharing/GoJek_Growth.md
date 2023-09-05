@@ -11,3 +11,8 @@ Problem A:
 Problem E:
 
 <img width="911" alt="Screenshot 2023-09-04 at 5 58 15 PM" src="https://github.com/mindyng/2023-Business-Projects/assets/12889138/af45fbaf-0e22-4996-849d-10d95d2d91e6">
+
+
+RESPONSE:
+
+Good team member of Growth has solid grasp of Statistics (ratios) and opportunity costs- how to determine what is the best thing to work on. There is understanding of sampling, selection bias, 
