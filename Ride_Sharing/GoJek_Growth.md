@@ -65,11 +65,11 @@ This will be based on which experiments were successful with statistical signifi
 
 Whether or not the solution is actionable would have been determined during experiment generation phase. It would be the step before determining which experiments to prioritize (by possibly calculating opportunity costs). Actionable means that users' behavior will change based on specific change to product. 
 
-Short-term execution plan is based on UX, Eng, Analytics team coming together to build MVP (prototype).
+* Short-term execution plan is based on UX, Eng, Analytics team coming together to build MVP (prototype).
 
-Long-term plan execution plan involves: if experiment shows statistical significant results, how to build out possible full-fledged MVP and/or addressing  non-expected insights gained from conducting experiments.
+* Long-term plan execution plan involves: if experiment shows statistical significant results, how to build out possible full-fledged MVP and/or addressing  non-expected insights gained from conducting experiments.
 
-Able to determine if solution represents actual opportunity/problem being solved by calculating opportunity costs and creating success forecasts using data about current state of users' behaviors (negative), specific metrics related to users' friction points. Examine closely the ROI and maximize it - with little company resources, how can we see the greatest uptick in active users and engagement.
+* Able to determine if solution represents actual opportunity/problem being solved by calculating opportunity costs and creating success forecasts using data about current state of users' behaviors (negative), specific metrics related to users' friction points. Examine closely the ROI and maximize it - with little company resources, how can we see the greatest uptick in active users and engagement.
 
 To really determine if this solution represents an actual opportunity/solves a problem is by releasing new features in the wild and seeing if it changes users' behavior by performing A/B Test.
 
@@ -81,8 +81,8 @@ Hypothesis: Adding Content Feed with strategic product placements will increase 
 
 Experiment Design:
 
-Control: Group that is exposed to status quo home page without content feed
-Ha: Test Group is exposed to home page with content feed with product placements
+- Ho (Control): Group that is exposed to status quo home page without content feed
+- Ha: Test Group is exposed to home page with content feed with product placements
 
 • Calculate power in order to determine sample size
 • Once get sample size, can determine how long to run experiment based on traffic (100000/day but need 1000000 users to reach power then 10 days/2 weeks to reach proper sample size to get stat sig result)
@@ -90,9 +90,9 @@ Ha: Test Group is exposed to home page with content feed with product placements
 
 Metrics to measure
 
-Success: increase transactions
-Stretch: increase LTV
-Guardrail: Engagement
+- Success: increase transactions
+- Stretch: increase LTV
+- Guardrail: Engagement
 
 Insights:
 
@@ -108,13 +108,14 @@ Insights:
 Analyzing Experiment:
 
 Look at the metrics you are measuring performance of test against. What type of data is it? 
-0/1 -> Chi Square Test
-Normal/bootstrapped -> t-test
-Non-Normal -> Mann Whitney U test
+- 0/1 -> Chi Square Test
+- Normal/bootstrapped -> t-test
+- Non-Normal -> Mann Whitney U test
 
 When setting sig level at: 0.05, and stat test stat is < p-value then there is stat sig, reject H0 in favor or Ha. 
 
 Concluding notes on experimentation:
+
 • Make sure to control for endogeneity 
 	1. Endogeneity- independent variable correlation with dependent variable unattributable because of unknown effect (used in: cause and effect in multivariate conditions); misattributing impact of experiment if not controlling for all variables 
 		A. Disentangle causality in feature we were testing
