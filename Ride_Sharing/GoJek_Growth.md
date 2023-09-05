@@ -57,7 +57,7 @@ Example of Calculating Opportunity Costs based on Funnel:
 
 Reference:  https://almanac.io/docs/process-prioritizing-growth-experiments-513f257a2571983772919a92fa05da69
 
-
+![image](https://github.com/mindyng/2023-Business-Projects/assets/12889138/3b283303-d17e-4106-a4b7-a5afe2812b4c)
 
 Solution:
 
@@ -120,6 +120,3 @@ Concluding notes on experimentation:
 		A. Disentangle causality in feature we were testing
 • Sometimes learnings are not as expected from start of experiment.
 Run tests multiple times if can afford it.
-
-![image](https://github.com/mindyng/2023-Business-Projects/assets/12889138/490a42c5-00f8-422d-bf9b-2f56a98e75be)
-
