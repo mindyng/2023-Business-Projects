@@ -56,7 +56,6 @@ However, opportunity cost is also an important issue to be considered. We need t
 Example of Calculating Opportunity Costs based on Funnel:
 
 Reference:  https://almanac.io/docs/process-prioritizing-growth-experiments-513f257a2571983772919a92fa05da69
-![image](https://github.com/mindyng/2023-Business-Projects/assets/12889138/56cd3c67-599f-4105-b1a9-829da9048b28)
 
 Solution:
 
@@ -71,4 +70,4 @@ Long-term plan execution plan involves: if experiment shows statistical signific
 Able to determine if solution represents actual opportunity/problem being solved by calculating opportunity costs and creating success forecasts using data about current state of users' behaviors (negative), specific metrics related to users' friction points.
 
 Problem E:
-![image](https://github.com/mindyng/2023-Business-Projects/assets/12889138/c24c27af-d974-4b41-80cc-e6c513b7ec29)
+
