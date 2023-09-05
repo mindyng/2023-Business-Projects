@@ -57,6 +57,8 @@ Example of Calculating Opportunity Costs based on Funnel:
 
 Reference:  https://almanac.io/docs/process-prioritizing-growth-experiments-513f257a2571983772919a92fa05da69
 
+
+
 Solution:
 
 This will be based on which experiments were successful with statistical significance. A/B testing allows for elimination of random chance, determining causality. Careful with: Endogeneity- independent variable correlation with dependent variable unattributable because of unknown effect (used in: cause and effect in multivariate conditions); misattributing impact of experiment if not controlling for all variables. So make sure all possible effects from product change are being measured/accounted for when defining success, stretch and guardrail metrics.
@@ -67,7 +69,57 @@ Short-term execution plan is based on UX, Eng, Analytics team coming together to
 
 Long-term plan execution plan involves: if experiment shows statistical significant results, how to build out possible full-fledged MVP and/or addressing  non-expected insights gained from conducting experiments.
 
-Able to determine if solution represents actual opportunity/problem being solved by calculating opportunity costs and creating success forecasts using data about current state of users' behaviors (negative), specific metrics related to users' friction points.
+Able to determine if solution represents actual opportunity/problem being solved by calculating opportunity costs and creating success forecasts using data about current state of users' behaviors (negative), specific metrics related to users' friction points. Examine closely the ROI and maximize it - with little company resources, how can we see the greatest uptick in active users and engagement.
+
+To really determine if this solution represents an actual opportunity/solves a problem is by releasing new features in the wild and seeing if it changes users' behavior by performing A/B Test.
 
 Problem E:
+
+New Product Feature - Content Feed made in order to increase # of transactions
+
+Hypothesis: Adding Content Feed with strategic product placements will increase engagement and therefore increase propensity of user to convert using different Go-Jek services
+
+Experiment Design:
+
+Control: Group that is exposed to status quo home page without content feed
+Ha: Test Group is exposed to home page with content feed with product placements
+
+• Calculate power in order to determine sample size
+• Once get sample size, can determine how long to run experiment based on traffic (100000/day but need 1000000 users to reach power then 10 days/2 weeks to reach proper sample size to get stat sig result)
+• random sampling
+
+Metrics to measure
+
+Success: increase transactions
+Stretch: increase LTV
+Guardrail: Engagement
+
+Insights:
+
+• Who is using the feed the most?
+• Who is just engaging with the feed?
+• Who is on the feed and presses on a product icon?
+• What is the usual amount of time spent on feed?
+• What is the usual amount of time spent to go from feed to product icon?
+• At what time is the feed usually used?
+• When do people usually drop off from feed?
+• How many drop off from product Go-Tix/Go-Pulsa after coming from feed vs not coming from feed?
+
+Analyzing Experiment:
+
+Look at the metrics you are measuring performance of test against. What type of data is it? 
+0/1 -> Chi Square Test
+Normal/bootstrapped -> t-test
+Non-Normal -> Mann Whitney U test
+
+When setting sig level at: 0.05, and stat test stat is < p-value then there is stat sig, reject H0 in favor or Ha. 
+
+Concluding notes on experimentation:
+• Make sure to control for endogeneity 
+	1. Endogeneity- independent variable correlation with dependent variable unattributable because of unknown effect (used in: cause and effect in multivariate conditions); misattributing impact of experiment if not controlling for all variables 
+		A. Disentangle causality in feature we were testing
+• Sometimes learnings are not as expected from start of experiment.
+Run tests multiple times if can afford it.
+
+![image](https://github.com/mindyng/2023-Business-Projects/assets/12889138/490a42c5-00f8-422d-bf9b-2f56a98e75be)
 
